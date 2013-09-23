@@ -1,0 +1,22 @@
+# ------------------------------
+# GForge Configuration
+# ------------------------------
+GFORGE_LOGIN            = ''
+GFORGE_PASSWORD         = ''
+GFORGE_PROJECT          = ''
+GFORGE_TRACKERITEM_LINK = ''
+GFORGE_ENDPOINT_URL     = ''
+GFORGE_XML_NAMESPACE    = GFORGE_ENDPOINT_URL
+
+# ------------------------------
+# GitHub Configuration
+# ------------------------------
+GITHUB_TOKEN     = ''
+GITHUB_PROJECT   = ''
+
+# ------------------------------
+# GForge to GitHub User Mapping
+# ------------------------------
+GFORGE_TO_GITHUB_USERNAME_MAPPING = {
+    'from'   : 'to',
+}
