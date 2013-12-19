@@ -112,6 +112,9 @@ def add_trackeritem_to_github( trackeritem ):
             gfe = gforge_elements[int(f.field_data)]
             labels.append(github_label(gfe))
 
+    # truncate long body for github body size limit
+    body = body[:65500]
+
     # create new github issue
     github_issue = github_repo.create_issue(title, body=body, assignee=assignee, labels=labels)
 
