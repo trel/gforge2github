@@ -149,6 +149,12 @@ def migrate_gforge_trackeritems_to_github( trackeritems ):
     previous_tiid = 0
     for k, i in uniquetrackeritems.iteritems():
 
+        skip_to = 1
+        if i.tracker_item_id < skip_to:
+            previous_tiid += 1
+            print "skipping ahead to %d... [%d]" % ( skip_to, i.tracker_item_id )
+            continue
+
         if github.rate_limiting[0] < GITHUB_SPARE_REQUESTS:
             raise Exception("Aborting due to impending GitHub API rate-limit cutoff.")
 
