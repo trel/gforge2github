@@ -97,7 +97,6 @@ def add_trackeritem_to_github( trackeritem ):
 
     # assignee
     assignee = "none"
-    print trackeritem.assignees[0].assignee
     if trackeritem.assignees[0].assignee != 100:  # 100 is the system user in GForge
         assignee = github_nameduser_by_gforge_userid(trackeritem.assignees[0].assignee)
 
@@ -295,3 +294,6 @@ if __name__ == "__main__":
 
         # migrate gforge tracker items to github
         migrate_gforge_trackeritems_to_github( gforge_trackeritems )
+
+        # exit cleanly
+        print "Done."
