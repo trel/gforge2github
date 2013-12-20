@@ -65,7 +65,7 @@ def check_user_mapping():
         errorflag = 1
         print "Need to be added as github collaborators:"
         justgithub = list(githubnoperms - localnotfound)
-        print "    %s" % justgithub
+        print "    %s" % map(github_username_by_gforge_username, justgithub)
 
     if errorflag == 1:
         exit("ERROR: user mapping is not complete")
