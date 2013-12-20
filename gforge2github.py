@@ -146,10 +146,14 @@ def migrate_gforge_trackeritems_to_github( trackeritems ):
     for i in trackeritems:
         uniquetrackeritems[i.tracker_item_id] = i
 
+    # loop through the sorted tracker items
     previous_tiid = 0
-    for k, i in uniquetrackeritems.iteritems():
+    for k, i in sorted(uniquetrackeritems.iteritems()):
 
+        # TODO: determine this number from github directly
+        #       set to largest existing github issue id
         skip_to = 1
+
         if i.tracker_item_id < skip_to:
             previous_tiid += 1
             print "skipping ahead to %d... [%d]" % ( skip_to, i.tracker_item_id )
