@@ -108,7 +108,7 @@ def add_trackeritem_to_github( trackeritem ):
     # labels
     labels = [github_label("imported")]
     for f in trackeritem.extra_field_data:
-        if (f.field_data != '' and f.field_data != "100"):
+        if (f.field_data != '' and f.field_data != "100" and f.field_data is not None):
             gfe = gforge_elements[int(f.field_data)]
             labels.append(github_label(gfe))
 
