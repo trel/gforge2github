@@ -108,9 +108,12 @@ def add_trackeritem_to_github( trackeritem ):
     # labels
     labels = [github_label("imported")]
     for f in trackeritem.extra_field_data:
-        if (f.field_data != '' and f.field_data != "100" and f.field_data is not None):
-            gfe = gforge_elements[int(f.field_data)]
-            labels.append(github_label(gfe))
+        if (f.field_data != '' and f.field_data is not None):
+            try:
+                gfe = gforge_elements[int(f.field_data)]
+                labels.append(github_label(gfe))
+            except KeyError:
+                pass
 
     # truncate long body for github body size limit
     body = body[:65500]
