@@ -18,6 +18,7 @@ import sys
 sys.path.append( "PyGithub" )
 from github import Github
 from github import GithubException
+from operator import attrgetter
 
 logging.basicConfig(level = logging.INFO)
 GITHUB_SPARE_REQUESTS = 50
@@ -149,9 +150,8 @@ def migrate_gforge_trackeritems_to_github( trackeritems ):
     previous_tiid = 0
     for k, i in sorted(uniquetrackeritems.iteritems()):
 
-        # TODO: determine this number from github directly
-        #       set to largest existing github issue id
-        skip_to = 1
+        # skip to largest existing github issue id
+        skip_to = sorted(all_github_issues, key=attrgetter('number'))[-1].number
 
         if i.tracker_item_id < skip_to:
             previous_tiid += 1
